@@ -291,8 +291,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.9863627, z: 1}
+  m_Center: {x: 0, y: 0.006818652, z: 0}
 --- !u!23 &376993551
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -406,6 +406,8 @@ MonoBehaviour:
   controller: {fileID: 376993555}
   jumpForce: 25
   graviyScale: 6
+  jumpPressedRemember: 0
+  jumpPressedRememberTime: 0.2
 --- !u!1 &393335284
 GameObject:
   m_ObjectHideFlags: 0
