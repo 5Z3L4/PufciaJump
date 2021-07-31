@@ -51,4 +51,12 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(moveDirection*Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.CompareTag("Respawn"))
+        {
+            Debug.Log("You Died");
+        }
+    }
 }
