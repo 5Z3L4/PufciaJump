@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float graviyScale;
     public float jumpPressedRemember;
     public float jumpPressedRememberTime = 0.5f;
+    public GameObject respawnPoint;
 
     private Vector3 moveDirection;
     // Start is called before the first frame update
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
         {
             jumpPressedRemember = jumpPressedRememberTime;
         }
+
         if (controller.isGrounded)
         {
             moveDirection.y = -1;
@@ -49,7 +51,8 @@ public class PlayerController : MonoBehaviour
             moveDirection.y += (Physics.gravity.y * graviyScale * Time.deltaTime);
         }
 
-        controller.Move(moveDirection*Time.deltaTime);
+        controller.Move(moveDirection * Time.deltaTime);
+            
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -57,6 +60,8 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Respawn"))
         {
             Debug.Log("You Died");
+            transform.position = respawnPoint.transform.position;
+            
         }
     }
 }
