@@ -23,13 +23,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        
+
         float yStore = moveDirection.y;
         moveDirection = (transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"));
         moveDirection = moveDirection.normalized * moveSpeed;
         moveDirection.y = yStore;
         jumpPressedRemember -= Time.deltaTime;
-     
+
         if (Input.GetButtonDown("Jump"))
         {
             jumpPressedRemember = jumpPressedRememberTime;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         }
 
         controller.Move(moveDirection * Time.deltaTime);
-            
+
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("You Died");
             transform.position = respawnPoint.transform.position;
-            
+
         }
     }
 }
