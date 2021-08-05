@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float jumpPressedRemember;
 
     public float jumpPressedRememberTime = 0.5f;
+    public GameObject respawnPoint;
 
     private Vector3 moveDirection;
     public bool onLadder;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
     void MoveCallculation()
     {
         //move variables
+
         float yStore = moveDirection.y;
         if (!onLadder)
         {
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
         #region jumping
         //Instead of checking if player is on the ground instantly it makes space for mistake (bunny hops are possible thanks to that, cuz players sucks)
+
         if (Input.GetButtonDown("Jump"))
         {
             jumpPressedRemember = jumpPressedRememberTime;
@@ -68,11 +71,17 @@ public class PlayerController : MonoBehaviour
         }
         #endregion
 
+
+        controller.Move(moveDirection * Time.deltaTime);
+
+    }
+
         if (onLadder)
         {
             moveDirection = transform.up * Input.GetAxisRaw("Vertical");
             moveDirection = moveDirection.normalized * moveSpeed;
         }
+
 
         controller.Move(moveDirection * Time.deltaTime);
     }
@@ -81,6 +90,8 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Respawn"))
         {
             Debug.Log("You Died");
+            transform.position = respawnPoint.transform.position;
+
         }
 
         if (collision.CompareTag("Ladder"))
