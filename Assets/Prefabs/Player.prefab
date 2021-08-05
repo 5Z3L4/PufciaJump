@@ -150,4 +150,3 @@ MonoBehaviour:
   graviyScale: 6
   jumpPressedRemember: 0
   jumpPressedRememberTime: 0.2
-  emptyObject: {fileID: 5046658006199363968}
